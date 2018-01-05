@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+       <h3>Prueba con for</h3>
+        @for (int index = 0; index < 12; index++)
+        {
+        <div>@index</div>
+
+        }
+    </div>
+
+    <div>
+        @{
+            <h3>Prueba con while</h3>
+        var prueba = 0;
+
+        while (prueba < 10)
+        {
+            prueba++;
+            <p> va por el @prueba</p>
+}
+        }
+    </div>
+
+    <div>
+        @{ 
+            <h3>Prueba de busqueda dentro del array</h3>
+            string[] nombres = { "juan", "jose", "maria", "del carmen" };
+            int i = Array.IndexOf(nombres, "maria")+1;//es +1 porque el array arranca en 0
+            int c = nombres.Length;
+            string x = nombres[2 - 1];
+
+            foreach(var persona in nombres)
+            {
+                <p> @persona</p>
+            }
+            <p>en el array hay @c nombres</p>
+            <p>la persona en la posicion 2 es @x</p>
+            <p>maria esta en la posicion @i</p>
+        }
+    </div>
+
+
+</body>
+</html>

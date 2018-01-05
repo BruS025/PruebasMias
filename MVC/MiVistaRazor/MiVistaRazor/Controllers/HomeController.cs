@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MiMVC.Controllers
+namespace MiVistaRazor.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Home
         public ActionResult Index()
         {
-            return RedirectToAction("TodoProveedor", "Proveedor");
+            return View();
         }
     }
 }

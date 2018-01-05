@@ -5,19 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MiMVC
+namespace MiVistaMVC
 {
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                "Clientes",
-                "Clientes/{Nombre}",
-                new { Controller = "Clientes", action = "Buscar", nombre = UrlParameter.Optional }
-                );
 
             routes.MapRoute(
                 name: "Default",
