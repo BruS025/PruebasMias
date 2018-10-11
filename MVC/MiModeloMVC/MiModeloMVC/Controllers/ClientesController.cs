@@ -11,10 +11,28 @@ namespace MiModeloMVC.Controllers
 {
     public class ClientesController : Controller
     {
+        public static List<Clientes> empList = new List<Clientes>
+        {
+            new Clientes
+            {
+                ID=1,
+                Nombre="Bruno",
+                FechaAlta = DateTime.Parse(DateTime.Today.ToString()),
+                Edad=25
+            },
+            new Clientes
+            {
+                ID=1,
+                Nombre="Adrian",
+                FechaAlta = DateTime.Parse(DateTime.Today.ToString()),
+                Edad=24
+            },
+        };
+
         // GET: Clientes
         public ActionResult Index()
         {
-            var Clientes = from e in TodosLosClientes()
+            var Clientes = from e in empList
                            orderby e.ID
                            select e;
             return View(Clientes);
@@ -52,7 +70,10 @@ namespace MiModeloMVC.Controllers
         // GET: Clientes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            List<Clientes> empList = TodosLosClientes();
+
+            var clientes = empList.Single(m => m.ID == id);//variable que contiene clientes a la cual le decimos que no seleccione el registro del modelo y que si es igual el id nos muestre la vista clientes
+            return View(clientes);
         }
 
         // POST: Clientes/Edit/5
@@ -61,9 +82,10 @@ namespace MiModeloMVC.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var clientes = empList.Single(m => m.ID == id);
+                    if (TryUpdateModel(clientes))
+                    return RedirectToAction("Index");
+                return View(clientes);
             }
             catch
             {
@@ -111,7 +133,7 @@ namespace MiModeloMVC.Controllers
                     ID = 12,
                     Nombre = "Adrian",
                     FechaAlta = DateTime.Parse(DateTime.Today.ToString()),
-                    Edad = 25
+                    Edad = 24
                 },
             };
         }
